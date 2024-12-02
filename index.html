@@ -7,17 +7,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
+  <header class="header">
     <h1>Sorteio de Amigo Secreto</h1>
+  </header>
+  <main class="container">
     <div class="input-group">
-      <input type="text" id="nomes" placeholder="Digite os nomes separados por vírgula">
-      <button id="adicionar">Adicionar Nomes</button>
+      <input type="text" id="nome" placeholder="Digite um nome">
+      <button id="adicionar">Adicionar Nome</button>
     </div>
     <h3>Lista de Nomes:</h3>
     <ul id="lista-nomes"></ul>
     <button id="sortear" class="btn-sortear">Sortear</button>
     <div id="resultado" class="resultado">O resultado será exibido aqui</div>
-  </div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

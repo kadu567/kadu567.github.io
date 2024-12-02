@@ -1,25 +1,20 @@
 let nomes = []; // Lista de nomes adicionados
 
-// Adicionar nomes à lista
+// Adiciona um nome à lista
 document.getElementById("adicionar").addEventListener("click", () => {
-  const input = document.getElementById("nomes");
-  const nomesEntrada = input.value.trim();
+  const input = document.getElementById("nome");
+  const nome = input.value.trim();
 
-  if (nomesEntrada) {
-    const novosNomes = nomesEntrada
-      .split(",")
-      .map((nome) => nome.trim())
-      .filter((nome) => nome && !nomes.includes(nome)); // Remove duplicados e valores inválidos
-
-    if (novosNomes.length > 0) {
-      nomes = [...nomes, ...novosNomes];
+  if (nome) {
+    if (!nomes.includes(nome)) {
+      nomes.push(nome);
       atualizarListaNomes();
       input.value = ""; // Limpa o campo de entrada
     } else {
-      alert("Todos os nomes inseridos já foram adicionados ou são inválidos.");
+      alert("Este nome já foi adicionado.");
     }
   } else {
-    alert("Por favor, insira nomes separados por vírgula.");
+    alert("Por favor, insira um nome válido.");
   }
 });
 
@@ -35,7 +30,7 @@ function atualizarListaNomes() {
   });
 }
 
-// Realizar o sorteio
+// Realiza o sorteio
 document.getElementById("sortear").addEventListener("click", () => {
   if (nomes.length < 2) {
     alert("Adicione pelo menos 2 nomes para realizar o sorteio.");
@@ -66,7 +61,7 @@ document.getElementById("sortear").addEventListener("click", () => {
   exibirResultado(pares);
 });
 
-// Exibir o resultado do sorteio
+// Exibe o resultado do sorteio
 function exibirResultado(pares) {
   const resultadoDiv = document.getElementById("resultado");
   resultadoDiv.innerHTML = "<h3>Resultado do Sorteio:</h3>";
