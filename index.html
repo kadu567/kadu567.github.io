@@ -23,10 +23,13 @@
       padding: 10px;
       font-size: 16px;
     }
-    #resultado {
+    #resultado, #nomes-adicionados {
       margin-top: 20px;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
+      color: #333;
+    }
+    #resultado {
       color: #008000;
     }
   </style>
@@ -35,8 +38,9 @@
   <h1>Sorteio de Amigo Secreto</h1>
   <input type="text" id="nome" placeholder="Digite um nome">
   <button onclick="adicionarNome()">Adicionar Nome</button>
-  <button onclick="sortearNome()">Sortear Nome</button>
-  <div id="resultado">Resultado aparecerá aqui</div>
+  <button onclick="sortear()">Sortear</button>
+  <div id="nomes-adicionados">Nomes adicionados: Nenhum ainda.</div>
+  <div id="resultado"></div>
 
   <script src="script.js"></script>
 </body>
