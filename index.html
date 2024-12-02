@@ -1,1 +1,43 @@
-jfçokajsflçsaj.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio de Amigo Secreto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #008000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sorteio de Amigo Secreto</h1>
+  <input type="text" id="nome" placeholder="Digite um nome">
+  <button onclick="adicionarNome()">Adicionar Nome</button>
+  <button onclick="sortearNome()">Sortear Nome</button>
+  <div id="resultado">Resultado aparecerá aqui</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
