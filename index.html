@@ -3,47 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amigo Secreto</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f8ff;
-    }
-    h1 {
-      color: #333;
-    }
-    input, button {
-      margin: 10px;
-      padding: 10px;
-      font-size: 16px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    #resultado {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #008000;
-    }
-  </style>
+  <title>Sorteio de Amigo Secreto</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Sorteio de Amigo Secreto</h1>
-  <input type="text" id="nome" placeholder="Digite um nome">
-  <button onclick="adicionarNome()">Adicionar Nome</button>
-  <h3>Lista de Nomes:</h3>
-  <ul id="lista-nomes"></ul>
-  <button onclick="sortear()">Sortear</button>
-  <div id="resultado">O resultado será exibido aqui</div>
-
+  <div class="container">
+    <h1>Sorteio de Amigo Secreto</h1>
+    <div class="input-group">
+      <input type="text" id="nomes" placeholder="Digite os nomes separados por vírgula">
+      <button id="adicionar">Adicionar Nomes</button>
+    </div>
+    <h3>Lista de Nomes:</h3>
+    <ul id="lista-nomes"></ul>
+    <button id="sortear" class="btn-sortear">Sortear</button>
+    <div id="resultado" class="resultado">O resultado será exibido aqui</div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

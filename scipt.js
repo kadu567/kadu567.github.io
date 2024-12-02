@@ -1,22 +1,27 @@
 let nomes = []; // Lista de nomes adicionados
 
-// Adiciona um nome à lista e atualiza a exibição
-function adicionarNome() {
-  const input = document.getElementById("nome");
-  const nome = input.value.trim();
+// Adicionar nomes à lista
+document.getElementById("adicionar").addEventListener("click", () => {
+  const input = document.getElementById("nomes");
+  const nomesEntrada = input.value.trim();
 
-  if (nome) {
-    if (!nomes.includes(nome)) {
-      nomes.push(nome);
+  if (nomesEntrada) {
+    const novosNomes = nomesEntrada
+      .split(",")
+      .map((nome) => nome.trim())
+      .filter((nome) => nome && !nomes.includes(nome)); // Remove duplicados e valores inválidos
+
+    if (novosNomes.length > 0) {
+      nomes = [...nomes, ...novosNomes];
       atualizarListaNomes();
       input.value = ""; // Limpa o campo de entrada
     } else {
-      alert("Esse nome já foi adicionado.");
+      alert("Todos os nomes inseridos já foram adicionados ou são inválidos.");
     }
   } else {
-    alert("Por favor, insira um nome válido.");
+    alert("Por favor, insira nomes separados por vírgula.");
   }
-}
+});
 
 // Atualiza a lista de nomes na tela
 function atualizarListaNomes() {
@@ -30,8 +35,8 @@ function atualizarListaNomes() {
   });
 }
 
-// Realiza o sorteio dos nomes
-function sortear() {
+// Realizar o sorteio
+document.getElementById("sortear").addEventListener("click", () => {
   if (nomes.length < 2) {
     alert("Adicione pelo menos 2 nomes para realizar o sorteio.");
     return;
@@ -59,9 +64,9 @@ function sortear() {
   }
 
   exibirResultado(pares);
-}
+});
 
-// Exibe o resultado do sorteio na tela
+// Exibir o resultado do sorteio
 function exibirResultado(pares) {
   const resultadoDiv = document.getElementById("resultado");
   resultadoDiv.innerHTML = "<h3>Resultado do Sorteio:</h3>";
