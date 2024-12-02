@@ -8,9 +8,9 @@ function adicionarNome() {
   if (nome) {
     if (!nomes.includes(nome)) {
       nomes.push(nome);
-      atualizarListaNomes();
+      atualizarListaNomes(); // Atualiza a exibição em tempo real
       alert(`${nome} foi adicionado à lista!`);
-      input.value = "";
+      input.value = ""; // Limpa o campo de entrada
     } else {
       alert("Esse nome já foi adicionado.");
     }
@@ -22,7 +22,11 @@ function adicionarNome() {
 // Atualizar exibição da lista de nomes
 function atualizarListaNomes() {
   const listaDiv = document.getElementById("nomes-adicionados");
-  listaDiv.textContent = `Nomes adicionados: ${nomes.join(", ") || "Nenhum ainda."}`;
+  if (nomes.length > 0) {
+    listaDiv.textContent = `Nomes adicionados: ${nomes.join(", ")}`;
+  } else {
+    listaDiv.textContent = "Nomes adicionados: Nenhum ainda.";
+  }
 }
 
 // Sortear pares de amigo secreto
