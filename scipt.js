@@ -1,14 +1,14 @@
 let nomes = []; // Lista de nomes adicionados
 
-// Função para adicionar nomes
+// Função para adicionar nomes à lista
 document.getElementById("adicionar").addEventListener("click", () => {
-  const input = document.getElementById("nome");
-  const nome = input.value.trim();
+  const input = document.getElementById("nome"); // Captura o campo de entrada
+  const nome = input.value.trim(); // Remove espaços extras
 
-  if (nome) {
-    if (!nomes.includes(nome)) {
-      nomes.push(nome);
-      atualizarListaNomes();
+  if (nome) { // Verifica se há algo no campo
+    if (!nomes.includes(nome)) { // Verifica se o nome já foi adicionado
+      nomes.push(nome); // Adiciona o nome à lista
+      atualizarListaNomes(); // Atualiza a exibição da lista
       input.value = ""; // Limpa o campo de entrada
     } else {
       alert("Este nome já foi adicionado.");
@@ -18,11 +18,12 @@ document.getElementById("adicionar").addEventListener("click", () => {
   }
 });
 
-// Atualizar lista de nomes na tela
+// Atualiza a exibição da lista de nomes
 function atualizarListaNomes() {
-  const listaUl = document.getElementById("lista-nomes");
-  listaUl.innerHTML = ""; // Limpa a lista
+  const listaUl = document.getElementById("lista-nomes"); // Captura o elemento da lista
+  listaUl.innerHTML = ""; // Limpa a lista antes de atualizá-la
 
+  // Adiciona cada nome como um item da lista
   nomes.forEach((nome) => {
     const li = document.createElement("li");
     li.textContent = nome;
