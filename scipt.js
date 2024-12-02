@@ -1,6 +1,6 @@
-let nomes = [];
+let nomes = []; // Lista de nomes adicionados
 
-// Adicionar nome à lista
+// Adiciona um nome à lista e atualiza a exibição
 function adicionarNome() {
   const input = document.getElementById("nome");
   const nome = input.value.trim();
@@ -8,8 +8,7 @@ function adicionarNome() {
   if (nome) {
     if (!nomes.includes(nome)) {
       nomes.push(nome);
-      atualizarListaNomes(); // Atualiza a exibição em tempo real
-      alert(`${nome} foi adicionado à lista!`);
+      atualizarListaNomes();
       input.value = ""; // Limpa o campo de entrada
     } else {
       alert("Esse nome já foi adicionado.");
@@ -19,17 +18,19 @@ function adicionarNome() {
   }
 }
 
-// Atualizar exibição da lista de nomes
+// Atualiza a lista de nomes na tela
 function atualizarListaNomes() {
-  const listaDiv = document.getElementById("nomes-adicionados");
-  if (nomes.length > 0) {
-    listaDiv.textContent = `Nomes adicionados: ${nomes.join(", ")}`;
-  } else {
-    listaDiv.textContent = "Nomes adicionados: Nenhum ainda.";
-  }
+  const listaUl = document.getElementById("lista-nomes");
+  listaUl.innerHTML = ""; // Limpa a lista antes de atualizar
+
+  nomes.forEach((nome) => {
+    const li = document.createElement("li");
+    li.textContent = nome;
+    listaUl.appendChild(li);
+  });
 }
 
-// Sortear pares de amigo secreto
+// Realiza o sorteio dos nomes
 function sortear() {
   if (nomes.length < 2) {
     alert("Adicione pelo menos 2 nomes para realizar o sorteio.");
@@ -37,34 +38,34 @@ function sortear() {
   }
 
   const sorteados = [...nomes];
-  const paresSorteio = new Map();
+  const pares = new Map();
 
   for (let nome of nomes) {
     const opcoesValidas = sorteados.filter(
-      (n) => n !== nome && paresSorteio.get(n) !== nome
+      (n) => n !== nome && pares.get(n) !== nome
     );
 
     if (opcoesValidas.length === 0) {
-      alert("Não foi possível realizar o sorteio sem repetições. Tente novamente.");
+      alert("Não foi possível realizar o sorteio sem pares inválidos. Tente novamente.");
       return;
     }
 
     const sorteado = opcoesValidas[Math.floor(Math.random() * opcoesValidas.length)];
-    paresSorteio.set(nome, sorteado);
+    pares.set(nome, sorteado);
 
     // Remove o sorteado da lista para evitar duplicações
     const index = sorteados.indexOf(sorteado);
     if (index > -1) sorteados.splice(index, 1);
   }
 
-  exibirResultado(paresSorteio);
+  exibirResultado(pares);
 }
 
-// Exibir resultado do sorteio
-function exibirResultado(paresSorteio) {
+// Exibe o resultado do sorteio na tela
+function exibirResultado(pares) {
   const resultadoDiv = document.getElementById("resultado");
   resultadoDiv.innerHTML = "<h3>Resultado do Sorteio:</h3>";
-  paresSorteio.forEach((valor, chave) => {
+  pares.forEach((valor, chave) => {
     const par = document.createElement("p");
     par.textContent = `${chave} tirou ${valor}`;
     resultadoDiv.appendChild(par);
